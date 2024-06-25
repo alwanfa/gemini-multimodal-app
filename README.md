@@ -14,11 +14,14 @@ To install Gemini Multimodal App, follow these steps:
 
    ```bash
    git clone https://github.com/your_username/gemini-multimodal-app.git
+```
 ### 2. Install dependancies
    ```bash
    pip install -r requirements.txt
+```
 
 ### 3. Customize .env file based on .env-example using your own api-key
 ### 4. Run flask server
    ```bash
    main.py
+```
