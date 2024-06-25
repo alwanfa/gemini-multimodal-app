@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Baking with the Gemini API</title>
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+
+<body>
+  <main>
+    <h1>Multimodal Gemini API</h1>
+    <form>
+      <label for="imageUpload">Upload Image:</label>
+        <input type="file" id="imageUpload" accept="image/*" onchange="previewImage(event)">
+        <div class="preview">
+            <p>Preview Image:</p>
+            <img id="imagePreview" src="#" alt="Image Preview" style="display: none;">
+        </div>
+      <div class="prompt-box">
+        <label>
+          <input name="prompt" placeholder="Enter instructions here" type="text"
+            value="Provide an example recipe for the baked goods in the image">
+        </label>
+        <button type="submit">Go</button>
+      </div>
+    </form>
+    <p class="output"></p>
+  </main>
+
+  <script src="https://unpkg.com/markdown-it@8.4.2/dist/markdown-it.min.js"></script>
+  <script src="https://unpkg.com/base64-js@1.3.0/base64js.min.js"></script>
+  <script type="module" src="/main.js"></script>
+  <script>
+    function previewImage(event) {
+            const file = event.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    const preview = document.getElementById('imagePreview');
+                    preview.src = e.target.result;
+                    localStorage["file"] = e.target.result;
+                    preview.style.display = 'block';
+                    console.log(e.target.result);
+                };
+
+                reader.readAsDataURL(file);
+            } else {
+                const preview = document.getElementById('imagePreview');
+                preview.src = '#';
+                preview.style.display = 'none';
+            }
+        }
+  </script>
+</body>
+
+</html>
