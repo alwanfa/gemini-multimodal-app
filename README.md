@@ -1,4 +1,4 @@
-# Gemini Multimodal App
+# Gemini Multimodal Website
 
 This is my self project customizing the gemini-app on project idx google using flask, and js.
 
